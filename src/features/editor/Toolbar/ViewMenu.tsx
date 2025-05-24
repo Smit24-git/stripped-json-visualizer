@@ -32,8 +32,10 @@ export const ViewMenu = () => {
           w="100%"
           value={viewMode}
           onChange={e => {
-            setViewMode(e as ViewMode);
-            gaEvent("change_view_mode", { label: e });
+            // disabled for the time being.
+            // TODO: enable when both modes are available for tree view; dark and light
+            // setViewMode(e as ViewMode);
+            // gaEvent("change_view_mode", { label: e });
           }}
           data={[
             { value: ViewMode.Graph, label: "Graph" },
@@ -46,8 +48,9 @@ export const ViewMenu = () => {
         <Menu.Item
           leftSection={<BsCheck2 opacity={darkmodeEnabled ? 100 : 0} />}
           onClick={() => {
-            toggleDarkMode(!darkmodeEnabled);
-            gaEvent("toggle_dark_mode", { label: darkmodeEnabled ? "on" : "off" });
+            // TODO: enable when both modes are available; dark and light
+            // toggleDarkMode(!darkmodeEnabled);
+            // gaEvent("toggle_dark_mode", { label: darkmodeEnabled ? "on" : "off" });
           }}
         >
           <Text size="xs">Dark Mode</Text>

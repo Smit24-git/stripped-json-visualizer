@@ -53,34 +53,12 @@ const theme = createTheme({
 });
 
 function JsonCrack({ Component, pageProps }: AppProps) {
-  const { pathname } = useRouter();
-
-  // Create a single smart manager that handles pathname logic internally
-  const colorSchemeManager = smartColorSchemeManager({
-    key: "editor-color-scheme",
-    getPathname: () => pathname,
-    dynamicPaths: ["/editor"], // Only editor paths use dynamic theme
-  });
-
   return (
     <>
-      <NextSeo {...SEO} />
-      <SoftwareAppJsonLd
-        name="JSON Crack"
-        price="0"
-        priceCurrency="USD"
-        type="SoftwareApplication"
-        operatingSystem="Browser"
-        keywords="json, json viewer, json visualizer, json formatter, json editor, json parser, json to tree view, json to diagram, json graph, json beautifier, json validator, json to csv, json to yaml, json minifier, json schema, json data transformer, json api, online json viewer, online json formatter, online json editor, json tool"
-        applicationCategory="DeveloperApplication"
-        aggregateRating={{ ratingValue: "4.9", ratingCount: "19" }}
-      />
       <MantineProvider
-        colorSchemeManager={colorSchemeManager}
-        defaultColorScheme="light"
+        defaultColorScheme="dark"
         theme={theme}
       >
-        <ThemeProvider theme={lightTheme}>
           <Toaster
             position="bottom-right"
             containerStyle={{
@@ -97,9 +75,7 @@ function JsonCrack({ Component, pageProps }: AppProps) {
             }}
           />
           <GlobalStyle />
-          {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && <GoogleAnalytics trackPageViews />}
           <Component {...pageProps} />
-        </ThemeProvider>
       </MantineProvider>
     </>
   );

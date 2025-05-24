@@ -4,11 +4,12 @@ import styled from "styled-components";
 import { ViewMode } from "../../enums/viewMode.enum";
 import { GraphView } from "./views/GraphView";
 import { TreeView } from "./views/TreeView";
+import { darkTheme } from "../../constants/theme";
 
 const StyledLiveEditor = styled.div`
   position: relative;
   height: 100%;
-  background: ${({ theme }) => theme.GRID_BG_COLOR};
+  background: ${darkTheme.GRID_BG_COLOR};
   overflow: auto;
   cursor: url("/assets/cursor.svg"), auto;
 

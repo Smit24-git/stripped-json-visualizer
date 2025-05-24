@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { darkTheme } from "../../../constants/theme";
 
 export const StyledToolElement = styled.button<{ $hide?: boolean; $highlight?: boolean }>`
   display: ${({ $hide }) => ($hide ? "none" : "flex")};
@@ -8,7 +9,7 @@ export const StyledToolElement = styled.button<{ $hide?: boolean; $highlight?: b
   font-size: 12px;
   background: ${({ $highlight }) =>
     $highlight ? "linear-gradient(rgba(0, 0, 0, 0.1) 0 0)" : "none"};
-  color: ${({ theme }) => theme.INTERACTIVE_NORMAL};
+  color: ${darkTheme.INTERACTIVE_NORMAL};
   padding: 6px;
   border-radius: 3px;
   white-space: nowrap;
@@ -18,7 +19,7 @@ export const StyledToolElement = styled.button<{ $hide?: boolean; $highlight?: b
   }
 
   &:hover {
-    color: ${({ theme }) => theme.INTERACTIVE_HOVER};
+    color: ${darkTheme.INTERACTIVE_HOVER};
     opacity: 1;
     box-shadow: none;
   }

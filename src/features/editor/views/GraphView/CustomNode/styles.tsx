@@ -2,6 +2,7 @@ import type { DefaultTheme } from "styled-components";
 import styled from "styled-components";
 import { LinkItUrl } from "react-linkify-it";
 import { NODE_DIMENSIONS } from "../../../../../constants/graph";
+import { darkTheme } from "../../../../../constants/theme";
 
 type TextColorFn = {
   theme: DefaultTheme;
@@ -12,19 +13,19 @@ type TextColorFn = {
 
 function getTextColor({ $value, $type, $parent, theme }: TextColorFn) {
   // per type
-  if ($parent && $type === "array") return theme.NODE_COLORS.PARENT_ARR;
-  if ($parent && $type === "object") return theme.NODE_COLORS.PARENT_OBJ;
-  if ($type === "object") return theme.NODE_COLORS.NODE_KEY;
-  if ($type === "array") return theme.NODE_COLORS.NODE_VALUE;
+  if ($parent && $type === "array") return darkTheme.NODE_COLORS.PARENT_ARR;
+  if ($parent && $type === "object") return darkTheme.NODE_COLORS.PARENT_OBJ;
+  if ($type === "object") return darkTheme.NODE_COLORS.NODE_KEY;
+  if ($type === "array") return darkTheme.NODE_COLORS.NODE_VALUE;
 
   // per value
-  if ($value && !Number.isNaN(+$value)) return theme.NODE_COLORS.INTEGER;
-  if ($value === "true") return theme.NODE_COLORS.BOOL.TRUE;
-  if ($value === "false") return theme.NODE_COLORS.BOOL.FALSE;
-  if ($value === "null") return theme.NODE_COLORS.NULL;
+  if ($value && !Number.isNaN(+$value)) return darkTheme.NODE_COLORS.INTEGER;
+  if ($value === "true") return darkTheme.NODE_COLORS.BOOL.TRUE;
+  if ($value === "false") return darkTheme.NODE_COLORS.BOOL.FALSE;
+  if ($value === "null") return darkTheme.NODE_COLORS.NULL;
 
   // default
-  return theme.NODE_COLORS.NODE_VALUE;
+  return darkTheme.NODE_COLORS.NODE_VALUE;
 }
 
 export const StyledLinkItUrl = styled(LinkItUrl)`
@@ -34,7 +35,7 @@ export const StyledLinkItUrl = styled(LinkItUrl)`
 
 export const StyledForeignObject = styled.foreignObject<{ $isObject?: boolean }>`
   text-align: ${({ $isObject }) => !$isObject && "center"};
-  color: ${({ theme }) => theme.NODE_COLORS.TEXT};
+  color: ${darkTheme.NODE_COLORS.TEXT};
   font-family: monospace;
   font-size: 12px;
   font-weight: 500;
@@ -43,7 +44,7 @@ export const StyledForeignObject = styled.foreignObject<{ $isObject?: boolean }>
 
   &.searched {
     background: rgba(27, 255, 0, 0.1);
-    border: 2px solid ${({ theme }) => theme.TEXT_POSITIVE};
+    border: 2px solid ${darkTheme.TEXT_POSITIVE};
     border-radius: 2px;
     box-sizing: border-box;
   }
@@ -89,7 +90,7 @@ export const StyledRow = styled.span<{ $value: string }>`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  border-bottom: 1px solid ${({ theme }) => theme.NODE_COLORS.DIVIDER};
+  border-bottom: 1px solid ${darkTheme.NODE_COLORS.DIVIDER};
   box-sizing: border-box;
 
   &:last-of-type {
@@ -97,12 +98,12 @@ export const StyledRow = styled.span<{ $value: string }>`
   }
 
   .searched & {
-    border-bottom: 1px solid ${({ theme }) => theme.TEXT_POSITIVE};
+    border-bottom: 1px solid ${darkTheme.TEXT_POSITIVE};
   }
 `;
 
 export const StyledChildrenCount = styled.span`
-  color: ${({ theme }) => theme.NODE_COLORS.CHILD_COUNT};
+  color: ${darkTheme.NODE_COLORS.CHILD_COUNT};
   padding: 10px;
   margin-left: -15px;
 `;

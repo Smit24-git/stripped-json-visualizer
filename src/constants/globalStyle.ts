@@ -2,7 +2,6 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   html, body {
-    background: #ffffff;
     overscroll-behavior: none;
     -webkit-font-smoothing: subpixel-antialiased !important;
   }

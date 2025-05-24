@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
-import { useMantineColorScheme } from "@mantine/core";
+import { createTheme, MantineProvider, useMantineColorScheme } from "@mantine/core";
 import "@mantine/dropzone/styles.css";
 import styled, { ThemeProvider } from "styled-components";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -64,6 +64,45 @@ const LiveEditor = dynamic(() => import("../features/editor/LiveEditor"), {
   ssr: false,
 });
 
+const theme = createTheme({
+  autoContrast: true,
+  fontSmoothing: false,
+  respectReducedMotion: true,
+  cursorType: "pointer",
+  fontFamily:
+    'system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"',
+  defaultGradient: {
+    from: "#388cdb",
+    to: "#0f037f",
+    deg: 180,
+  },
+  primaryShade: 8,
+  colors: {
+    brightBlue: [
+      "#e6f2ff",
+      "#cee1ff",
+      "#9bc0ff",
+      "#649dff",
+      "#3980fe",
+      "#1d6dfe",
+      "#0964ff",
+      "#0054e4",
+      "#004acc",
+      "#003fb5",
+    ],
+  },
+  radius: {
+    lg: "12px",
+  },
+  components: {
+    Button: {
+      defaultProps: {
+        fw: 500,
+      },
+    },
+  },
+});
+
 const EditorPage = () => {
   const { query, isReady } = useRouter();
   const { setColorScheme } = useMantineColorScheme();
@@ -81,40 +120,36 @@ const EditorPage = () => {
 
   return (
     <>
-      <NextSeo
-        {...SEO}
-        title="Editor | JSON Crack"
-        description="JSON Crack Editor is a tool for visualizing into graphs, analyzing, editing, formatting, querying, transforming and validating JSON, CSV, YAML, XML, and more."
-        canonical="https://jsoncrack.com/editor"
-      />
-      <ThemeProvider theme={darkmodeEnabled ? darkTheme : lightTheme}>
-        <QueryClientProvider client={queryClient}>
-          <ExternalMode />
-          <ModalController />
-          <StyledEditorWrapper>
-            <StyledPageWrapper>
-              <Toolbar />
-              <StyledEditorWrapper>
-                <StyledEditor proportionalLayout={false}>
-                  <Allotment.Pane
-                    preferredSize={450}
-                    minSize={fullscreen ? 0 : 300}
-                    maxSize={800}
-                    visible={!fullscreen}
-                  >
-                    <TextEditor />
-                  </Allotment.Pane>
-                  <Allotment.Pane minSize={0}>
-                    <LiveEditor />
-                  </Allotment.Pane>
-                </StyledEditor>
-                <FullscreenDropzone />
-              </StyledEditorWrapper>
-            </StyledPageWrapper>
-            <BottomBar />
-          </StyledEditorWrapper>
-        </QueryClientProvider>
-      </ThemeProvider>
+      <MantineProvider
+        defaultColorScheme={darkmodeEnabled ? 'dark' : 'light'}
+        theme={theme}>
+          <QueryClientProvider client={queryClient}>
+            <ExternalMode />
+            <ModalController />
+            <StyledEditorWrapper>
+              <StyledPageWrapper>
+                <Toolbar />
+                <StyledEditorWrapper>
+                  <StyledEditor proportionalLayout={false}>
+                    <Allotment.Pane
+                      preferredSize={450}
+                      minSize={fullscreen ? 0 : 300}
+                      maxSize={800}
+                      visible={!fullscreen}
+                    >
+                      <TextEditor />
+                    </Allotment.Pane>
+                    <Allotment.Pane minSize={0}>
+                      <LiveEditor />
+                    </Allotment.Pane>
+                  </StyledEditor>
+                  <FullscreenDropzone />
+                </StyledEditorWrapper>
+              </StyledPageWrapper>
+              <BottomBar />
+            </StyledEditorWrapper>
+          </QueryClientProvider>
+      </MantineProvider>
     </>
   );
 };

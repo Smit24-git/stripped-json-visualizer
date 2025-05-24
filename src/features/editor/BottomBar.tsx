@@ -7,7 +7,6 @@ import { BiSolidDockLeft } from "react-icons/bi";
 import {
   VscCheck,
   VscError,
-  VscFeedback,
   VscRunAll,
   VscSync,
   VscSyncIgnored,
@@ -15,14 +14,15 @@ import {
 import useConfig from "../../store/useConfig";
 import useFile from "../../store/useFile";
 import useGraph from "./views/GraphView/stores/useGraph";
+import { darkTheme } from "../../constants/theme";
 
 const StyledBottomBar = styled.div`
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 1px solid ${({ theme }) => theme.BACKGROUND_MODIFIER_ACCENT};
-  background: ${({ theme }) => theme.TOOLBAR_BG};
+  border-top: 1px solid ${darkTheme.BACKGROUND_MODIFIER_ACCENT};
+  background: ${darkTheme.TOOLBAR_BG};
   max-height: 27px;
   height: 27px;
   z-index: 35;
@@ -62,7 +62,7 @@ const StyledBottomBarItem = styled.button<{ $bg?: string }>`
   padding: 4px;
   font-size: 12px;
   font-weight: 400;
-  color: ${({ theme }) => theme.INTERACTIVE_NORMAL};
+  color: ${darkTheme.INTERACTIVE_NORMAL};
   background: ${({ $bg }) => $bg};
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -70,7 +70,7 @@ const StyledBottomBarItem = styled.button<{ $bg?: string }>`
 
   &:hover:not(&:disabled) {
     background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0 0);
-    color: ${({ theme }) => theme.INTERACTIVE_HOVER};
+    color: ${darkTheme.INTERACTIVE_HOVER};
   }
 
   &:disabled {
@@ -145,16 +145,6 @@ export const BottomBar = () => {
 
       <StyledRight>
         <StyledBottomBarItem>Nodes: {nodeCount}</StyledBottomBarItem>
-        <Link
-          href="https://github.com/AykutSarac/jsoncrack.com/discussions"
-          target="_blank"
-          rel="noopener"
-        >
-          <StyledBottomBarItem>
-            <VscFeedback />
-            Feedback
-          </StyledBottomBarItem>
-        </Link>
       </StyledRight>
     </StyledBottomBar>
   );

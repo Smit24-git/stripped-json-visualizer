@@ -2,27 +2,16 @@ import React from "react";
 import type { InferGetStaticPropsType, GetStaticProps } from "next";
 import { NextSeo } from "next-seo";
 import { SEO } from "../constants/seo";
-import { FAQ } from "../layout/Landing/FAQ";
-import { Features } from "../layout/Landing/Features";
-import { HeroPreview } from "../layout/Landing/HeroPreview";
-import { HeroSection } from "../layout/Landing/HeroSection";
-import { Section1 } from "../layout/Landing/Section1";
-import { Section2 } from "../layout/Landing/Section2";
-import { Section3 } from "../layout/Landing/Section3";
-import Layout from "../layout/PageLayout";
+import Link from "next/link";
 
 export const HomePage = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
-    <Layout>
-      <NextSeo {...SEO} canonical="https://jsoncrack.com" />
-      <HeroSection stars={props.stars} />
-      <HeroPreview />
-      <Section1 />
-      <Section2 />
-      <Section3 />
-      <Features />
-      <FAQ />
-    </Layout>
+    <>
+      <h1>JSON Visualizer</h1>
+      <br/>
+      <p>Nothing to see here. this page will be removed shortly...</p>
+      <p>Click <Link style={{color: 'blueviolet'}} href={'./editor'}>here</Link> to visit the editor.</p>
+    </>
   );
 };
 
