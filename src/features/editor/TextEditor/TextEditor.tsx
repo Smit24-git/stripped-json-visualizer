@@ -1,9 +1,9 @@
 import React, { useCallback } from "react";
 import { LoadingOverlay } from "@mantine/core";
-import styled from "styled-components";
 import Editor, { type EditorProps, loader, type OnMount, useMonaco } from "@monaco-editor/react";
-import useConfig from "../../store/useConfig";
-import useFile from "../../store/useFile";
+import useConfig from "../../../store/useConfig";
+import useFile from "../../../store/useFile";
+import { StyledEditorWrapper } from "../../../pages";
 
 loader.config({
   paths: {
@@ -74,7 +74,6 @@ const TextEditor = () => {
 
   return (
     <StyledEditorWrapper>
-      <StyledWrapper>
         <Editor
           height="100%"
           language={fileType}
@@ -86,23 +85,9 @@ const TextEditor = () => {
           onChange={contents => setContents({ contents, skipUpdate: true })}
           loading={<LoadingOverlay visible />}
         />
-      </StyledWrapper>
     </StyledEditorWrapper>
   );
 };
 
 export default TextEditor;
 
-const StyledEditorWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  user-select: none;
-`;
-
-const StyledWrapper = styled.div`
-  display: grid;
-  height: calc(100vh - 67px);
-  grid-template-columns: 100%;
-  grid-template-rows: minmax(0, 1fr);
-`;

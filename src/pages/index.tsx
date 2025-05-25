@@ -8,7 +8,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Allotment } from "allotment";
 import "allotment/dist/style.css";
 // import Cookie from "js-cookie";
-import { BottomBar } from "../features/editor/BottomBar";
+import { BottomBar } from "../features/editor/BottomBar/BottomBar";
 import { FullscreenDropzone } from "../features/editor/FullscreenDropzone";
 import { Toolbar } from "../features/editor/Toolbar";
 import useGraph from "../features/editor/views/GraphView/stores/useGraph";
@@ -16,7 +16,6 @@ import useConfig from "../store/useConfig";
 import useFile from "../store/useFile";
 
 const ModalController = dynamic(() => import("../features/modals/ModalController"));
-const ExternalMode = dynamic(() => import("../features/editor/ExternalMode"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -53,7 +52,7 @@ export const StyledEditor = styled(Allotment)`
   }
 `;
 
-const TextEditor = dynamic(() => import("../features/editor/TextEditor"), {
+const TextEditor = dynamic(() => import("../features/editor/TextEditor/TextEditor"), {
   ssr: false,
 });
 
@@ -81,7 +80,6 @@ const EditorPage = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ExternalMode />
       <ModalController />
       <StyledEditorWrapper>
         <StyledPageWrapper>

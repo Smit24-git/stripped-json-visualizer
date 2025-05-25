@@ -1,0 +1,18 @@
+.left-bar-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 4px;
+    padding-left: 8px;
+}
+.justify-right {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    gap: 4px;
+}
+@media screen and (max-width: 480px) {
+    .left-bar-wrapper {
+        display: none;
+    }
+}

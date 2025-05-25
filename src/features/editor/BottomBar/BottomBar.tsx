@@ -1,6 +1,5 @@
 import React from "react";
 import { Flex, Popover, Text } from "@mantine/core";
-import styled from "styled-components";
 import { event as gaEvent } from "nextjs-google-analytics";
 import { BiSolidDockLeft } from "react-icons/bi";
 import {
@@ -10,73 +9,12 @@ import {
   VscSync,
   VscSyncIgnored,
 } from "react-icons/vsc";
-import useConfig from "../../store/useConfig";
-import useFile from "../../store/useFile";
-import useGraph from "./views/GraphView/stores/useGraph";
-import { darkTheme } from "../../constants/theme";
-
-const StyledBottomBar = styled.div`
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-top: 1px solid ${darkTheme.BACKGROUND_MODIFIER_ACCENT};
-  background: ${darkTheme.TOOLBAR_BG};
-  max-height: 27px;
-  height: 27px;
-  z-index: 35;
-  padding-right: 6px;
-
-  @media screen and (max-width: 320px) {
-    display: none;
-  }
-`;
-
-const StyledLeft = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: left;
-  gap: 4px;
-  padding-left: 8px;
-
-  @media screen and (max-width: 480px) {
-    display: none;
-  }
-`;
-
-const StyledRight = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: right;
-  gap: 4px;
-`;
-
-const StyledBottomBarItem = styled.button<{ $bg?: string }>`
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  width: fit-content;
-  margin: 0;
-  height: 28px;
-  padding: 4px;
-  font-size: 12px;
-  font-weight: 400;
-  color: ${darkTheme.INTERACTIVE_NORMAL};
-  background: ${({ $bg }) => $bg};
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-
-  &:hover:not(&:disabled) {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0 0);
-    color: ${darkTheme.INTERACTIVE_HOVER};
-  }
-
-  &:disabled {
-    opacity: 0.6;
-    cursor: default;
-  }
-`;
+import useConfig from "../../../store/useConfig";
+import useFile from "../../../store/useFile";
+import useGraph from "../views/GraphView/stores/useGraph";
+import StyledBottomBar from "./_components/StyledBottomBar";
+import styles from './bottombar.module.css';
+import StyledBottomBarItemButton from "./_components/StyledBottomBarItemButton";
 
 export const BottomBar = () => {
   const data = useFile(state => state.fileData);
@@ -94,16 +32,16 @@ export const BottomBar = () => {
   };
 
   React.useEffect(() => {
-    if (data?.name) window.document.title = `${data.name} | JSON Crack`;
+    if (data?.name) window.document.title = `${data.name} | JSON Visualizer`;
   }, [data]);
 
   return (
     <StyledBottomBar>
-      <StyledLeft>
-        <StyledBottomBarItem onClick={toggleEditor}>
+      <div className={styles['left-bar-wrapper']}>
+        <StyledBottomBarItemButton onClick={toggleEditor}>
           <BiSolidDockLeft />
-        </StyledBottomBarItem>
-        <StyledBottomBarItem>
+        </StyledBottomBarItemButton>
+        <StyledBottomBarItemButton>
           {error ? (
             <Popover width="auto" shadow="md" position="top" withArrow>
               <Popover.Target>
@@ -124,8 +62,8 @@ export const BottomBar = () => {
               <Text size="xs">Valid</Text>
             </Flex>
           )}
-        </StyledBottomBarItem>
-        <StyledBottomBarItem
+        </StyledBottomBarItemButton>
+        <StyledBottomBarItemButton
           onClick={() => {
             toggleLiveTransform(!liveTransformEnabled);
             gaEvent("toggle_live_transform");
@@ -133,18 +71,18 @@ export const BottomBar = () => {
         >
           {liveTransformEnabled ? <VscSync /> : <VscSyncIgnored />}
           <Text fz="xs">Live Transform</Text>
-        </StyledBottomBarItem>
+        </StyledBottomBarItemButton>
         {!liveTransformEnabled && (
-          <StyledBottomBarItem onClick={() => setContents({})} disabled={!!error}>
+          <StyledBottomBarItemButton onClick={() => setContents({})} disabled={!!error}>
             <VscRunAll />
             Click to Transform
-          </StyledBottomBarItem>
+          </StyledBottomBarItemButton>
         )}
-      </StyledLeft>
+      </div>
 
-      <StyledRight>
-        <StyledBottomBarItem>Nodes: {nodeCount}</StyledBottomBarItem>
-      </StyledRight>
+      <div className={styles['justify-right']}>
+        <StyledBottomBarItemButton>Nodes: {nodeCount}</StyledBottomBarItemButton>
+      </div>
     </StyledBottomBar>
   );
 };
