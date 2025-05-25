@@ -8,17 +8,18 @@ import { isContentImage } from "../lib/utils/calculateNodeSize";
 import useGraph from "../stores/useGraph";
 import { TextRenderer } from "./TextRenderer";
 import * as Styled from "./styles";
+import { darkTheme } from "../../../../../constants/theme";
 
 const StyledExpand = styled.button`
   pointer-events: all;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: ${({ theme }) => theme.TEXT_NORMAL};
+  color: ${darkTheme.TEXT_NORMAL};
   background: rgba(0, 0, 0, 0.1);
   height: 100%;
   width: 36px;
-  border-left: 1px solid ${({ theme }) => theme.BACKGROUND_MODIFIER_ACCENT};
+  border-left: 1px solid ${darkTheme.BACKGROUND_MODIFIER_ACCENT};
 
   &:hover {
     background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0 0);
@@ -43,7 +44,7 @@ const StyledImageWrapper = styled.div`
 const StyledImage = styled.img`
   border-radius: 2px;
   object-fit: contain;
-  background: ${({ theme }) => theme.BACKGROUND_MODIFIER_ACCENT};
+  background: ${darkTheme.BACKGROUND_MODIFIER_ACCENT};
 `;
 
 const Node = ({ node, x, y, hasCollapse = false }: CustomNodeProps) => {
