@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import type { AppProps } from "next/app";
-import { createTheme, MantineProvider } from "@mantine/core";
+import { createTheme, MantineProvider, useMantineColorScheme } from "@mantine/core";
 import "@mantine/core/styles.css";
 import "@mantine/code-highlight/styles.css";
 import { Toaster } from "react-hot-toast";
 import GlobalStyle from "../constants/globalStyle";
+import useConfig from "../store/useConfig";
 
 const theme = createTheme({
   autoContrast: true,
@@ -46,12 +47,14 @@ const theme = createTheme({
 });
 
 function JsonCrack({ Component, pageProps }: AppProps) {
+  
+  const darkmodeEnabled = useConfig(state => state.darkmodeEnabled);
+
   return (
     <>
       <MantineProvider
-        defaultColorScheme="dark"
-        theme={theme}
-      >
+        defaultColorScheme={darkmodeEnabled ? 'dark' : 'light'}
+        theme={theme}>
           <Toaster
             position="bottom-right"
             containerStyle={{
