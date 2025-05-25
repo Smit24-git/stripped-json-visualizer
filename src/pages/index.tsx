@@ -1,7 +1,5 @@
 import React from "react";
 import type { InferGetStaticPropsType, GetStaticProps } from "next";
-import { NextSeo } from "next-seo";
-import { SEO } from "../constants/seo";
 import Link from "next/link";
 
 export const HomePage = (props: InferGetStaticPropsType<typeof getStaticProps>) => {

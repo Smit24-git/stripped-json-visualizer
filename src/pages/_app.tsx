@@ -1,17 +1,10 @@
 import React from "react";
 import type { AppProps } from "next/app";
-import { useRouter } from "next/router";
 import { createTheme, MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
 import "@mantine/code-highlight/styles.css";
-import { ThemeProvider } from "styled-components";
-import { NextSeo, SoftwareAppJsonLd } from "next-seo";
-import { GoogleAnalytics } from "nextjs-google-analytics";
 import { Toaster } from "react-hot-toast";
 import GlobalStyle from "../constants/globalStyle";
-import { SEO } from "../constants/seo";
-import { lightTheme } from "../constants/theme";
-import { smartColorSchemeManager } from "../lib/utils/mantineColorScheme";
 
 const theme = createTheme({
   autoContrast: true,
