@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import { Flex, Popover, Text } from "@mantine/core";
 import styled from "styled-components";
 import { event as gaEvent } from "nextjs-google-analytics";
