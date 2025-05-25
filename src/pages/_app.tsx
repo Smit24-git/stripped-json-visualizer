@@ -4,8 +4,8 @@ import { createTheme, MantineProvider, useMantineColorScheme } from "@mantine/co
 import "@mantine/core/styles.css";
 import "@mantine/code-highlight/styles.css";
 import { Toaster } from "react-hot-toast";
-import GlobalStyle from "../constants/globalStyle";
 import useConfig from "../store/useConfig";
+import '../styles/global.css';
 
 const theme = createTheme({
   autoContrast: true,
@@ -70,7 +70,6 @@ function JsonCrack({ Component, pageProps }: AppProps) {
               },
             }}
           />
-          <GlobalStyle />
           <Component {...pageProps} />
       </MantineProvider>
     </>
