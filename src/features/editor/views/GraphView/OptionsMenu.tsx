@@ -1,7 +1,6 @@
-import React from "react";
+import React, { Children } from "react";
 import { ActionIcon, Button, Flex, Menu, Text } from "@mantine/core";
 import { useHotkeys } from "@mantine/hooks";
-import styled from "styled-components";
 import { event as gaEvent } from "nextjs-google-analytics";
 import { BsCheck2 } from "react-icons/bs";
 import { LuChevronRight, LuImageDown, LuMenu } from "react-icons/lu";
@@ -13,9 +12,9 @@ import { useModal } from "../../../../store/useModal";
 import type { LayoutDirection } from "../../../../types/graph";
 import useGraph from "./stores/useGraph";
 
-const StyledFlowIcon = styled(TiFlowMerge)<{ rotate: number }>`
-  transform: rotate(${({ rotate }) => `${rotate}deg`});
-`;
+const StyledFlowIcon = ({rotate})=>{
+  return <TiFlowMerge style={{transform: `rotate(${rotate}deg`}}></TiFlowMerge>
+}
 
 const getNextDirection = (direction: LayoutDirection) => {
   if (direction === "RIGHT") return "DOWN";

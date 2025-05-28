@@ -37,3 +37,18 @@ margin: 0;
 padding: 0;
 cursor: pointer;
 }
+
+.wrapper:active {
+    cursor: move !important;
+}
+
+/* TODO: use var to support both themes */
+rect {
+    color: #2B2C3E
+}
+
+
+.dragging,
+.dragging button {
+    pointer-events: none;
+}

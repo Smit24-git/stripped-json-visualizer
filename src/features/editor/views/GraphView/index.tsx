@@ -1,7 +1,6 @@
 import React from "react";
 import { Box, LoadingOverlay, useComputedColorScheme } from "@mantine/core";
 import { useDebouncedValue } from "@mantine/hooks";
-import styled from "styled-components";
 import debounce from "lodash.debounce";
 import { Space } from "react-zoomable-ui";
 import { Canvas } from "reaflow";
@@ -16,58 +15,8 @@ import { OptionsMenu } from "./OptionsMenu";
 import { SecureInfo } from "./SecureInfo";
 import { ZoomControl } from "./ZoomControl";
 import useGraph from "./stores/useGraph";
-import { darkTheme } from "../../../../constants/theme";
-
-const StyledEditorWrapper = styled.div<{ $widget: boolean; $showRulers: boolean }>`
-  position: absolute;
-  width: 100%;
-  height: ${({ $widget }) => ($widget ? "100vh" : "calc(100vh - 67px)")};
-
-  --bg-color: ${darkTheme.GRID_BG_COLOR};
-  --line-color-1: ${darkTheme.GRID_COLOR_PRIMARY};
-  --line-color-2: ${darkTheme.GRID_COLOR_SECONDARY};
-
-  background-color: var(--bg-color);
-  ${({ $showRulers }) =>
-    $showRulers &&
-    `
-    background-image: linear-gradient(var(--line-color-1) 1.5px, transparent 1.5px),
-      linear-gradient(90deg, var(--line-color-1) 1.5px, transparent 1.5px),
-      linear-gradient(var(--line-color-2) 1px, transparent 1px),
-      linear-gradient(90deg, var(--line-color-2) 1px, transparent 1px);
-    background-position:
-      -1.5px -1.5px,
-      -1.5px -1.5px,
-      -1px -1px,
-      -1px -1px;
-    background-size:
-      100px 100px,
-      100px 100px,
-      20px 20px,
-      20px 20px;
-  `};
-
-  .jsoncrack-space {
-    cursor: url("/assets/cursor.svg"), auto;
-  }
-
-  :active {
-    cursor: move;
-  }
-
-  .dragging,
-  .dragging button {
-    pointer-events: none;
-  }
-
-  rect {
-    fill: ${darkTheme.BACKGROUND_NODE};
-  }
-
-  @media only screen and (max-width: 320px) {
-    height: 100vh;
-  }
-`;
+import StyledEditorWrapper from "./_components/StyledEditorWrapper";
+import styles from './_components/view-components.module.css'
 
 const layoutOptions = {
   "elk.layered.compaction.postCompaction.strategy": "EDGE_LENGTH",
@@ -188,8 +137,7 @@ export const GraphView = ({ isWidget = false }: GraphProps) => {
           onContextMenu={e => e.preventDefault()}
           treatTwoFingerTrackPadGesturesLikeTouch={gesturesEnabled}
           pollForElementResizing
-          className="jsoncrack-space"
-        >
+          className={styles["jsoncrack-space"]}>
           <GraphCanvas isWidget={isWidget} />
         </Space>
       </StyledEditorWrapper>
