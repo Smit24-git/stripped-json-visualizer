@@ -1,37 +1,16 @@
 import React from "react";
-import Link from "next/link";
 import { Flex, Group, Select, Button } from "@mantine/core";
-import styled from "styled-components";
 import toast from "react-hot-toast";
 import { AiOutlineFullscreen } from "react-icons/ai";
-import { FaFireFlameCurved, FaGithub } from "react-icons/fa6";
 import { type FileFormat, formats } from "../../../enums/file.enum";
 import { JSONVisLogo } from "../../../layout/JsonVisLogo";
 import useFile from "../../../store/useFile";
 import { FileMenu } from "./FileMenu";
 import { ToolsMenu } from "./ToolsMenu";
 import { ViewMenu } from "./ViewMenu";
-import { StyledToolElement } from "./styles";
-import { darkTheme } from "../../../constants/theme";
+import { StyledToolElement } from "./StyledToolElement";
+import ToolbarOuterWrapper from "./_components/ToolbarOuterWrapper";
 
-const StyledTools = styled.div`
-  position: relative;
-  display: flex;
-  width: 100%;
-  align-items: center;
-  gap: 4px;
-  justify-content: space-between;
-  height: 40px;
-  padding: 4px 8px;
-  background: ${darkTheme.TOOLBAR_BG};
-  color: ${darkTheme.SILVER};
-  z-index: 36;
-  border-bottom: 1px solid ${darkTheme.SILVER_DARK};
-
-  @media only screen and (max-width: 320px) {
-    display: none;
-  }
-`;
 
 function fullscreenBrowser() {
   if (!document.fullscreenElement) {
@@ -48,7 +27,7 @@ export const Toolbar = () => {
   const format = useFile(state => state.format);
 
   return (
-    <StyledTools>
+    <ToolbarOuterWrapper>
       <Group gap="xs" justify="left" w="100%" style={{ flexWrap: "nowrap" }}>
         <StyledToolElement title="JSON Visualizer">
           <Flex gap="xs" align="center" justify="center">
@@ -75,6 +54,6 @@ export const Toolbar = () => {
           <AiOutlineFullscreen size="18" />
         </StyledToolElement>
       </Group>
-    </StyledTools>
+    </ToolbarOuterWrapper>
   );
 };

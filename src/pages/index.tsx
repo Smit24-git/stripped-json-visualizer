@@ -56,7 +56,7 @@ const TextEditor = dynamic(() => import("../features/editor/TextEditor/TextEdito
   ssr: false,
 });
 
-const LiveEditor = dynamic(() => import("../features/editor/LiveEditor"), {
+const LiveEditor = dynamic(() => import("../features/editor/InteractiveView/InteractiveView"), {
   ssr: false,
 });
 

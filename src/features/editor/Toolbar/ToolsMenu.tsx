@@ -12,7 +12,7 @@ import { jsonToContent } from "../../../lib/utils/jsonAdapter";
 import useFile from "../../../store/useFile";
 import useJson from "../../../store/useJson";
 import { useModal } from "../../../store/useModal";
-import { StyledToolElement } from "./styles";
+import { StyledToolElement } from "./StyledToolElement";
 
 export const ToolsMenu = () => {
   const setVisible = useModal(state => state.setVisible);
@@ -47,7 +47,7 @@ export const ToolsMenu = () => {
   return (
     <Menu shadow="md" withArrow>
       <Menu.Target>
-        <StyledToolElement onClick={() => gaEvent("show_tools_menu")}>
+        <StyledToolElement>
           <Flex align="center" gap={3}>
             Tools <CgChevronDown />
           </Flex>
@@ -59,7 +59,6 @@ export const ToolsMenu = () => {
           leftSection={<VscSearchFuzzy />}
           onClick={() => {
             setVisible("JQModal", true);
-            gaEvent("open_jq_modal");
           }}
         >
           JSON Query (jq)
@@ -69,7 +68,6 @@ export const ToolsMenu = () => {
           leftSection={<VscJson />}
           onClick={() => {
             setVisible("SchemaModal", true);
-            gaEvent("open_schema_modal");
           }}
         >
           JSON Schema
@@ -79,7 +77,6 @@ export const ToolsMenu = () => {
           leftSection={<MdFilterListAlt />}
           onClick={() => {
             setVisible("JPathModal", true);
-            gaEvent("open_json_path_modal");
           }}
         >
           JSON Path
@@ -90,7 +87,6 @@ export const ToolsMenu = () => {
           leftSection={<SiJsonwebtokens />}
           onClick={() => {
             setVisible("JWTModal", true);
-            gaEvent("open_jwt_modal");
           }}
         >
           Decode JWT
@@ -100,7 +96,6 @@ export const ToolsMenu = () => {
           leftSection={<VscGroupByRefType />}
           onClick={() => {
             setVisible("TypeModal", true);
-            gaEvent("open_type_modal");
           }}
         >
           Generate Type

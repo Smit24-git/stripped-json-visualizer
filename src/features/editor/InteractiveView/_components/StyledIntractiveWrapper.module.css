@@ -1,0 +1,21 @@
+.wrapper {
+  position: relative;
+  height: 100%;
+  overflow: auto;
+  cursor: url("/assets/cursor.svg"), auto;
+
+  & > ul {
+    margin-top: 0 !important;
+    padding: 12px !important;
+    font-family: monospace;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .tab-group {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 2;
+  }
+}

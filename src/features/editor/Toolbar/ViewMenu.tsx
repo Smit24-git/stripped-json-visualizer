@@ -6,7 +6,7 @@ import { BsCheck2 } from "react-icons/bs";
 import { CgChevronDown } from "react-icons/cg";
 import { ViewMode } from "../../../enums/viewMode.enum";
 import useConfig from "../../../store/useConfig";
-import { StyledToolElement } from "./styles";
+import { StyledToolElement } from "./StyledToolElement";
 
 export const ViewMenu = () => {
   const darkmodeEnabled = useConfig(state => state.darkmodeEnabled);

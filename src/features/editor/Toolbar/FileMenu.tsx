@@ -4,7 +4,7 @@ import { event as gaEvent } from "nextjs-google-analytics";
 import { CgChevronDown } from "react-icons/cg";
 import useFile from "../../../store/useFile";
 import { useModal } from "../../../store/useModal";
-import { StyledToolElement } from "./styles";
+import { StyledToolElement } from "./StyledToolElement";
 
 export const FileMenu = () => {
   const setVisible = useModal(state => state.setVisible);

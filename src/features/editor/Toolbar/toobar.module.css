@@ -1,0 +1,17 @@
+.styled-toolbar-button {
+    align-items: center;
+    gap: 4px;
+    place-content: center;
+    font-size: 12px;
+    padding: 6px;
+    border-radius: 3px;
+    white-space: nowrap;
+    position: relative;
+    
+}
+
+.styled-toolbar-button:hover {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0px, rgba(0, 0, 0, 0.1) 0px)!important;
+  opacity: 1;
+  box-shadow: none;
+}

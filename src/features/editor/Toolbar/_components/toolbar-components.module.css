@@ -1,0 +1,16 @@
+.toolbar-outer-wrapper {
+  position: relative;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 4px;
+  justify-content: space-between;
+  height: 40px;
+  padding: 4px 8px;
+  z-index: 36;
+}
+@media only screen and (max-width: 320px) {
+    .toolbar-outer-wrapper {
+        display: none;
+    }
+}
