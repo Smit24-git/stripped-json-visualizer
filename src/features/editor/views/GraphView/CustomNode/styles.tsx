@@ -1,17 +1,15 @@
-import type { DefaultTheme } from "styled-components";
 import styled from "styled-components";
 import { LinkItUrl } from "react-linkify-it";
 import { NODE_DIMENSIONS } from "../../../../../constants/graph";
 import { darkTheme } from "../../../../../constants/theme";
 
 type TextColorFn = {
-  theme: DefaultTheme;
   $type?: string;
   $value?: string;
   $parent?: boolean;
 };
 
-function getTextColor({ $value, $type, $parent, theme }: TextColorFn) {
+function getTextColor({ $value, $type, $parent }: TextColorFn) {
   // per type
   if ($parent && $type === "array") return darkTheme.NODE_COLORS.PARENT_ARR;
   if ($parent && $type === "object") return darkTheme.NODE_COLORS.PARENT_OBJ;
@@ -74,8 +72,8 @@ export const StyledKey = styled.span<{ $parent?: boolean; $type: string; $value?
   height: ${({ $parent }) => ($parent ? `${NODE_DIMENSIONS.PARENT_HEIGHT}px` : "auto")};
   line-height: ${({ $parent }) => ($parent ? `${NODE_DIMENSIONS.PARENT_HEIGHT}px` : "inherit")};
   padding: 0; // Remove padding
-  color: ${({ theme, $type, $parent = false, $value = "" }) =>
-    getTextColor({ $parent, $type, $value, theme })};
+  color: ${({ $type, $parent = false, $value = "" }) =>
+    getTextColor({ $parent, $type, $value })};
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -85,7 +83,7 @@ export const StyledRow = styled.span<{ $value: string }>`
   padding: 3px 10px;
   height: ${NODE_DIMENSIONS.ROW_HEIGHT}px;
   line-height: 18px;
-  color: ${({ theme, $value }) => getTextColor({ $value, theme })};
+  color: ${({ $value }) => getTextColor({ $value })};
   display: block;
   overflow: hidden;
   text-overflow: ellipsis;
