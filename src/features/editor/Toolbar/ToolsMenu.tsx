@@ -12,8 +12,8 @@ import { jsonToContent } from "../../../lib/utils/jsonAdapter";
 import useFile from "../../../store/useFile";
 import useJson from "../../../store/useJson";
 import { useModal } from "../../../store/useModal";
-import { StyledToolElement } from "./StyledToolElement";
-
+import { darkTheme } from "../../../constants/theme";
+import styles from './toobar.module.css'
 export const ToolsMenu = () => {
   const setVisible = useModal(state => state.setVisible);
   const getJson = useJson(state => state.getJson);
@@ -47,11 +47,11 @@ export const ToolsMenu = () => {
   return (
     <Menu shadow="md" withArrow>
       <Menu.Target>
-        <StyledToolElement>
+        <button style={{color: darkTheme.INTERACTIVE_NORMAL}} className={styles['styled-toolbar-button']}>
           <Flex align="center" gap={3}>
             Tools <CgChevronDown />
           </Flex>
-        </StyledToolElement>
+        </button>
       </Menu.Target>
       <Menu.Dropdown>
         <Menu.Item

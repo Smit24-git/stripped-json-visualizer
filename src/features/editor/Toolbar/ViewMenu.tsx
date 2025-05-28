@@ -6,8 +6,8 @@ import { BsCheck2 } from "react-icons/bs";
 import { CgChevronDown } from "react-icons/cg";
 import { ViewMode } from "../../../enums/viewMode.enum";
 import useConfig from "../../../store/useConfig";
-import { StyledToolElement } from "./StyledToolElement";
-
+import { darkTheme } from "../../../constants/theme";
+import styles from './toobar.module.css'
 export const ViewMenu = () => {
   const darkmodeEnabled = useConfig(state => state.darkmodeEnabled);
   const toggleDarkMode = useConfig(state => state.toggleDarkMode);
@@ -19,11 +19,11 @@ export const ViewMenu = () => {
   return (
     <Menu shadow="md" closeOnItemClick={false} withArrow>
       <Menu.Target>
-        <StyledToolElement onClick={() => gaEvent("show_view_menu")}>
+        <button style={{color: darkTheme.INTERACTIVE_NORMAL}} className={styles['styled-toolbar-button']}>
           <Flex align="center" gap={3}>
-            View <CgChevronDown />
+            Tools <CgChevronDown />
           </Flex>
-        </StyledToolElement>
+        </button>
       </Menu.Target>
       <Menu.Dropdown>
         <SegmentedControl

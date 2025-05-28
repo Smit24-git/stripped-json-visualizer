@@ -8,9 +8,9 @@ import useFile from "../../../store/useFile";
 import { FileMenu } from "./FileMenu";
 import { ToolsMenu } from "./ToolsMenu";
 import { ViewMenu } from "./ViewMenu";
-import { StyledToolElement } from "./StyledToolElement";
 import ToolbarOuterWrapper from "./_components/ToolbarOuterWrapper";
-
+import { darkTheme } from "../../../constants/theme";
+import styles from './toobar.module.css'
 
 function fullscreenBrowser() {
   if (!document.fullscreenElement) {
@@ -29,11 +29,11 @@ export const Toolbar = () => {
   return (
     <ToolbarOuterWrapper>
       <Group gap="xs" justify="left" w="100%" style={{ flexWrap: "nowrap" }}>
-        <StyledToolElement title="JSON Visualizer">
-          <Flex gap="xs" align="center" justify="center">
+        <button style={{color: darkTheme.INTERACTIVE_NORMAL}} className={styles['styled-toolbar-button']}>
+          <Flex align="center" gap={3}>
             <JSONVisLogo/>
           </Flex>
-        </StyledToolElement>
+        </button>
         <Select
           defaultValue="json"
           size="xs"
@@ -50,9 +50,9 @@ export const Toolbar = () => {
         <ToolsMenu />
       </Group>
       <Group gap="xs" justify="right" w="100%" style={{ flexWrap: "nowrap" }}>
-        <StyledToolElement title="Fullscreen" onClick={fullscreenBrowser}>
+        <button style={{color: darkTheme.INTERACTIVE_NORMAL}} className={styles['styled-toolbar-button']}>
           <AiOutlineFullscreen size="18" />
-        </StyledToolElement>
+        </button>
       </Group>
     </ToolbarOuterWrapper>
   );
