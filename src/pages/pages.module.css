@@ -1,0 +1,25 @@
+.styled-allotment {
+  position: relative !important;
+  display: flex;
+  /* background: ${({ theme }) => theme.BACKGROUND_SECONDARY}; */
+  height: calc(100vh - 67px);
+
+}
+
+.page-wrapper {
+  height: calc(100vh - 27px);
+  width: 100%;
+}
+
+.editor-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 320px) {
+    .styled-allotment,
+    .page-wrapper {
+        height: 100vh;
+    }
+}

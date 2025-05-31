@@ -21,7 +21,7 @@ export const ViewMenu = () => {
       <Menu.Target>
         <button style={{color: darkTheme.INTERACTIVE_NORMAL}} className={styles['styled-toolbar-button']}>
           <Flex align="center" gap={3}>
-            Tools <CgChevronDown />
+            View <CgChevronDown />
           </Flex>
         </button>
       </Menu.Target>

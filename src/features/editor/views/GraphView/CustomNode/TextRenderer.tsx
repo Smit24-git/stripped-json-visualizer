@@ -1,14 +1,18 @@
 import React from "react";
 import { ColorSwatch } from "@mantine/core";
-import styled from "styled-components";
 
-const StyledRow = styled.span`
-  display: inline-flex;
-  align-items: center;
-  overflow: hidden;
-  gap: 4px;
-  vertical-align: middle;
-`;
+const StyledRow = ({children}) =>{
+  return (
+    <span style={{
+      display: 'inline-flex',
+      alignItems: 'center',
+      overflow: 'hidden',
+      gap: '4px',
+      verticalAlign: 'middle',
+    }}>{children}</span>
+  )
+
+}
 
 const isURL = (word: string) => {
   const urlPattern =

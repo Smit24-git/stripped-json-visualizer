@@ -1,9 +1,8 @@
-import { useEffect } from "react";
+import { Children, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
-import { createTheme, MantineProvider, useMantineColorScheme } from "@mantine/core";
+import { useMantineColorScheme } from "@mantine/core";
 import "@mantine/dropzone/styles.css";
-import styled, { ThemeProvider } from "styled-components";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Allotment } from "allotment";
 import "allotment/dist/style.css";
@@ -14,7 +13,7 @@ import { Toolbar } from "../features/editor/Toolbar";
 import useGraph from "../features/editor/views/GraphView/stores/useGraph";
 import useConfig from "../store/useConfig";
 import useFile from "../store/useFile";
-
+import styles from './pages.module.css';
 const ModalController = dynamic(() => import("../features/modals/ModalController"));
 
 const queryClient = new QueryClient({
@@ -26,31 +25,23 @@ const queryClient = new QueryClient({
   },
 });
 
-export const StyledPageWrapper = styled.div`
-  height: calc(100vh - 27px);
-  width: 100%;
+export const StyledPageWrapper = ({children}) =>{
+  return (
+    <div className={styles['page-wrapper']}>{children}</div>
+  )
+}
 
-  @media only screen and (max-width: 320px) {
-    height: 100vh;
-  }
-`;
+export const StyledEditorWrapper = ({children}) => {
+  return (<div className={styles['editor-wrapper']}>{children}</div>)
+}
 
-export const StyledEditorWrapper = styled.div`
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-`;
-
-export const StyledEditor = styled(Allotment)`
-  position: relative !important;
-  display: flex;
-  background: ${({ theme }) => theme.BACKGROUND_SECONDARY};
-  height: calc(100vh - 67px);
-
-  @media only screen and (max-width: 320px) {
-    height: 100vh;
-  }
-`;
+export const StyledEditor = ({children, ...props}) => {
+  return (
+    <Allotment {...props} className={styles['styled-allotment']}  >
+      {children}
+    </Allotment>
+  )
+}
 
 const TextEditor = dynamic(() => import("../features/editor/TextEditor/TextEditor"), {
   ssr: false,

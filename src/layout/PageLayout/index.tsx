@@ -1,31 +1,26 @@
 import React from "react";
 import { Inter } from "next/font/google";
-import styled, { ThemeProvider } from "styled-components";
 import { lightTheme } from "../../constants/theme";
 
 const inter = Inter({
   subsets: ["latin-ext"],
 });
 
-const StyledLayoutWrapper = styled.div`
-  background: #fff;
-  font-family: ${inter.style.fontFamily};
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-`;
-
-const ContentWrapper = styled.div`
-  flex: 1;
-`;
+const StyledLayoutWrapper = ({children}) =>{
+  return <div style={{
+    background: '#fff',
+    fontFamily: inter.style.fontFamily,
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '100vh',
+  }}>{children}</div>
+}
 
 const PageLayout = ({ children }: React.PropsWithChildren) => {
   return (
-    <ThemeProvider theme={lightTheme}>
-      <StyledLayoutWrapper>
-        <ContentWrapper>{children}</ContentWrapper>
-      </StyledLayoutWrapper>
-    </ThemeProvider>
+    <StyledLayoutWrapper>
+      <div style={{flex: 1}}>{children}</div>
+    </StyledLayoutWrapper>
   );
 };
 
