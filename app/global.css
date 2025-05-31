@@ -1,0 +1,54 @@
+
+html, body {
+overscroll-behavior: none;
+-webkit-font-smoothing: subpixel-antialiased !important;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth !important;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-font-smoothing: never;
+}
+
+.hide {
+display: none;
+}
+
+svg {
+vertical-align: text-top;
+}
+
+a {
+color: unset;
+text-decoration: none;
+}
+
+button {
+border: none;
+outline: none;
+background: transparent;
+width: fit-content;
+margin: 0;
+padding: 0;
+cursor: pointer;
+}
+
+.wrapper:active {
+    cursor: move !important;
+}
+
+/* TODO: use var to support both themes */
+rect {
+    color:rgb(27, 36, 218)
+}
+
+
+.dragging,
+.dragging button {
+    pointer-events: none;
+}

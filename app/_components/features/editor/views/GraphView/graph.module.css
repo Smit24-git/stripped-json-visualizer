@@ -1,0 +1,9 @@
+rect {
+    color:rgb(27, 36, 218)
+}
+
+
+.dragging,
+.dragging button {
+    pointer-events: none;
+}
