@@ -1,5 +1,4 @@
 import React, { useMemo } from "react";
-import styled from "styled-components";
 import { MdLink, MdLinkOff } from "react-icons/md";
 import type { CustomNodeProps } from ".";
 import useToggleHide from "../../../../../hooks/useToggleHide";
@@ -9,43 +8,43 @@ import useGraph from "../stores/useGraph";
 import { TextRenderer } from "./TextRenderer";
 import * as Styled from "./styles";
 import { darkTheme } from "../../../../../constants/theme";
+import styles from './customnode.module.css';
 
-const StyledExpand = styled.button`
-  pointer-events: all;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: ${darkTheme.TEXT_NORMAL};
-  background: rgba(0, 0, 0, 0.1);
-  height: 100%;
-  width: 36px;
-  border-left: 1px solid ${darkTheme.BACKGROUND_MODIFIER_ACCENT};
+const StyledExpand = ({children, ...props}) => {
+  return <button {...props} className={styles['styled-expand-wrapper']} style={{
+    color: darkTheme.TEXT_NORMAL,
+    borderLeft: `1px solid ${darkTheme.BACKGROUND_MODIFIER_ACCENT}`,
+  }}>{children}</button>
+};
 
-  &:hover {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0 0);
-  }
-`;
+const StyledTextNodeWrapper = ({children, $hasCollapse, $isParent}) => {
+  return <span style={{
+      display: 'flex',
+      justifyContent:  $hasCollapse ? "space-between" : $isParent ? "center" : "flex-start",
+      alignItems: 'center',
+      height: '100%',
+      width: '100%',
+      overflow: 'hidden',
+      padding: $hasCollapse ? "0" : "0 10px",
+    }}>{children}</span>
+}
 
-const StyledTextNodeWrapper = styled.span<{ $hasCollapse: boolean; $isParent: boolean }>`
-  display: flex;
-  justify-content: ${({ $hasCollapse, $isParent }) =>
-    $hasCollapse ? "space-between" : $isParent ? "center" : "flex-start"};
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  padding: ${({ $hasCollapse }) => ($hasCollapse ? "0" : "0 10px")};
-`;
+const StyledImageWrapper = ({children}) => {
+  return (
+    <div style={{padding: '5px'}}>
+      {children}
+    </div>
+  )
+}
 
-const StyledImageWrapper = styled.div`
-  padding: 5px;
-`;
 
-const StyledImage = styled.img`
-  border-radius: 2px;
-  object-fit: contain;
-  background: ${darkTheme.BACKGROUND_MODIFIER_ACCENT};
-`;
+const StyledImage = ({...props}) => {
+  return  <img {...props} style={{
+    borderRadius: '2px',
+    objectFit: 'contain',
+    background: darkTheme.BACKGROUND_MODIFIER_ACCENT,
+  }} />
+}
 
 const Node = ({ node, x, y, hasCollapse = false }: CustomNodeProps) => {
   const {

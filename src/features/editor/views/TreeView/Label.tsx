@@ -2,6 +2,7 @@ import React from "react";
 import type { DefaultTheme } from "styled-components";
 import { styled } from "styled-components";
 import type { KeyPath } from "react-json-tree";
+import { darkTheme } from "../../../../constants/theme";
 
 interface LabelProps {
   keyPath: KeyPath;
@@ -9,9 +10,9 @@ interface LabelProps {
 }
 
 function getLabelColor({ $type, theme }: { $type?: string; theme: DefaultTheme }) {
-  if ($type === "Object") return theme.NODE_COLORS.PARENT_OBJ;
-  if ($type === "Array") return theme.NODE_COLORS.PARENT_ARR;
-  return theme.NODE_COLORS.PARENT_OBJ;
+  if ($type === "Object") return darkTheme.NODE_COLORS.PARENT_OBJ;
+  if ($type === "Array") return darkTheme.NODE_COLORS.PARENT_ARR;
+  return darkTheme.NODE_COLORS.PARENT_OBJ;
 }
 
 const StyledLabel = styled.span<{ $nodeType?: string }>`

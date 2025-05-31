@@ -34,8 +34,7 @@ export const ViewMenu = () => {
           onChange={e => {
             // disabled for the time being.
             // TODO: enable when both modes are available for tree view; dark and light
-            // setViewMode(e as ViewMode);
-            // gaEvent("change_view_mode", { label: e });
+            setViewMode(e as ViewMode);
           }}
           data={[
             { value: ViewMode.Graph, label: "Graph" },
