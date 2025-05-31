@@ -1,7 +1,7 @@
-import styled from "styled-components";
 import { LinkItUrl } from "react-linkify-it";
 import { NODE_DIMENSIONS } from "../../../../../constants/graph";
 import { darkTheme } from "../../../../../constants/theme";
+import styles from './customnode.module.css'
 
 type TextColorFn = {
   $type?: string;
@@ -26,82 +26,51 @@ function getTextColor({ $value, $type, $parent }: TextColorFn) {
   return darkTheme.NODE_COLORS.NODE_VALUE;
 }
 
-export const StyledLinkItUrl = styled(LinkItUrl)`
-  text-decoration: underline;
-  pointer-events: all;
-`;
+export const StyledLinkItUrl = ({children, ...props}) => {
+  return (
+    <LinkItUrl {...props} className={styles['link-it-url']}>{children}</LinkItUrl>
+  )
+}
 
-export const StyledForeignObject = styled.foreignObject<{ $isObject?: boolean }>`
-  text-align: ${({ $isObject }) => !$isObject && "center"};
-  color: ${darkTheme.NODE_COLORS.TEXT};
-  font-family: monospace;
-  font-size: 12px;
-  font-weight: 500;
-  overflow: hidden;
-  pointer-events: none;
+export const StyledForeignObject = ({children, $isObject, ...props}) => {
+  return (
+    <foreignObject 
+      className={styles['foreign-object']} 
+      style={{
+        textAlign: !$isObject ? "center" : undefined,
+        color: darkTheme.NODE_COLORS.TEXT,
+      }}
+      {...props}>
+        {children}
+    </foreignObject>
+  )
+}
 
-  &.searched {
-    background: rgba(27, 255, 0, 0.1);
-    border: 2px solid ${darkTheme.TEXT_POSITIVE};
-    border-radius: 2px;
-    box-sizing: border-box;
-  }
+export const StyledKey = ({children, $parent = undefined, $type, $value = undefined}) => {
+  return (
+    <span className={styles['styled-key']} style={{
+      display: $parent ? "flex" : "inline",
+      height: $parent ? `${NODE_DIMENSIONS.PARENT_HEIGHT}px` : "auto",
+      lineHeight: $parent ? `${NODE_DIMENSIONS.PARENT_HEIGHT}px` : "inherit",
+      color: getTextColor({ $parent, $type, $value }),
+    }}>{children}</span>
+  )
+}
 
-  .highlight {
-    background: rgba(255, 214, 0, 0.15);
-  }
+export const StyledRow = ({children, $value}) => {
+  return (
+    <span className={styles['styled-row']} style={{
+      height: NODE_DIMENSIONS.ROW_HEIGHT + `px`,
+      color: getTextColor({ $value }),
+      borderBottom: `1px solid ${darkTheme.NODE_COLORS.DIVIDER}`,
+    }}>{children}</span>
+  )
+}
 
-  .renderVisible {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 12px;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    cursor: pointer;
-  }
-`;
-
-export const StyledKey = styled.span<{ $parent?: boolean; $type: string; $value?: string }>`
-  display: ${({ $parent }) => ($parent ? "flex" : "inline")};
-  align-items: center;
-  justify-content: center; // Always center for parent nodes
-  flex: 1;
-  min-width: 0;
-  height: ${({ $parent }) => ($parent ? `${NODE_DIMENSIONS.PARENT_HEIGHT}px` : "auto")};
-  line-height: ${({ $parent }) => ($parent ? `${NODE_DIMENSIONS.PARENT_HEIGHT}px` : "inherit")};
-  padding: 0; // Remove padding
-  color: ${({ $type, $parent = false, $value = "" }) =>
-    getTextColor({ $parent, $type, $value })};
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-`;
-
-export const StyledRow = styled.span<{ $value: string }>`
-  padding: 3px 10px;
-  height: ${NODE_DIMENSIONS.ROW_HEIGHT}px;
-  line-height: 18px;
-  color: ${({ $value }) => getTextColor({ $value })};
-  display: block;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  border-bottom: 1px solid ${darkTheme.NODE_COLORS.DIVIDER};
-  box-sizing: border-box;
-
-  &:last-of-type {
-    border-bottom: none;
-  }
-
-  .searched & {
-    border-bottom: 1px solid ${darkTheme.TEXT_POSITIVE};
-  }
-`;
-
-export const StyledChildrenCount = styled.span`
-  color: ${darkTheme.NODE_COLORS.CHILD_COUNT};
-  padding: 10px;
-  margin-left: -15px;
-`;
+export const StyledChildrenCount = ({children}) => {
+  return <span style={{
+    color: darkTheme.NODE_COLORS.CHILD_COUNT,
+    padding: '10px',
+    marginLeft: '-15px',
+  }}> {children} </span>
+}

@@ -12,3 +12,72 @@
       background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0 0);
     }
 }
+
+
+.styled-row {
+  padding: 3px 10px;
+  line-height: 18px;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  box-sizing: border-box;
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+
+
+  /* TODO: fix this. */
+  .searched & {
+    /* border-bottom: 1px solid ${darkTheme.TEXT_POSITIVE}; */
+  }
+
+}
+
+.styled-key {
+  align-items: center;
+  justify-content: center; 
+  flex: 1;
+  min-width: 0;
+  padding: 0; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.link-it-url {
+  text-decoration: underline;
+  pointer-events: all;
+}
+
+
+.foreign-object {
+  font-family: monospace;
+  font-size: 12px;
+  font-weight: 500;
+  overflow: hidden;
+  pointer-events: none;
+
+  & .searched {
+    background: rgba(27, 255, 0, 0.1);
+    /* border: 2px solid ${darkTheme.TEXT_POSITIVE}; */
+    border-radius: 2px;
+    box-sizing: border-box;
+  }
+
+  .highlight {
+    background: rgba(255, 214, 0, 0.15);
+  }
+
+  .renderVisible {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    cursor: pointer;
+  }
+}
