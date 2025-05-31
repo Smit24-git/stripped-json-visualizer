@@ -59,7 +59,6 @@
     "react-text-transition": "^3.1.0",
     "react-zoomable-ui": "^0.11.0",
     "reaflow": "5.4.1",
-    "styled-components": "^6.1.17",
     "toml": "^3.0.0",
     "use-long-press": "^3.3.0",
     "zustand": "^4.5.4"
