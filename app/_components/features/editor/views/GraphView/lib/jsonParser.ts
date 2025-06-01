@@ -66,11 +66,12 @@ export function parser(jsonStr: string): Graph {
     }
 
     if (states.graph.nodes.length === 0) {
-      if (parsedJsonTree.type === "array") {
-        addNodeToGraph({ graph: states.graph, text: "[]" });
-      } else {
-        addNodeToGraph({ graph: states.graph, text: "{}" });
-      }
+      // don't show anything if there is not data to begin with!!!
+      // if (parsedJsonTree.type === "array") {
+      //   addNodeToGraph({ graph: states.graph, text: "[]" });
+      // } else {
+      //   addNodeToGraph({ graph: states.graph, text: "{}" });
+      // }
     }
 
     // filter parent nodes that have no children

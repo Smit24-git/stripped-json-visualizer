@@ -60,6 +60,11 @@ const GraphCanvas = ({ isWidget }: GraphProps) => {
     [isWidget, paneHeight, paneWidth, centerView, setLoading, validateHiddenNodes]
   );
 
+  //cancel loading for empty nodes, eg: {}, [] jsons 
+  if(nodes.length == 0) {
+    setLoading(false)
+  }
+
   return (
     <Canvas
       className="jsoncrack-canvas"
