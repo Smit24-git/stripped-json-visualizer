@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import { Button, Stack, Text, Title } from "@mantine/core";
-import { NextSeo } from "next-seo";
 import Layout from "./_components/layout/PageLayout";
 
 const NotFound = () => {
