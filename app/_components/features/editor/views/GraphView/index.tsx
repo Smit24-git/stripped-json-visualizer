@@ -126,7 +126,8 @@ export const GraphView = ({ isWidget = false }: GraphProps) => {
       {aboveSupportedLimit && <NotSupported />}
       <LoadingOverlay visible={debouncedLoading} />
       {!isWidget && <OptionsMenu />}
-      {!isWidget && <SecureInfo />}
+      {/* uncomment this if you everything is processed locally on client's broweser. */}
+      {/* {!isWidget && <SecureInfo />} */}
       <ZoomControl />
       <StyledEditorWrapper
         $widget={isWidget}
