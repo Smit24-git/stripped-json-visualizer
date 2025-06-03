@@ -37,7 +37,6 @@ interface JsonActions {
   clear: () => void;
   setFile: (fileData: File) => void;
   setJsonSchema: (jsonSchema: object | null) => void;
-  checkEditorSession: (url: Query, widget?: boolean) => void;
 }
 
 export type File = {
@@ -118,8 +117,6 @@ const useFile = create<FileStates & JsonActions>()((set, get) => ({
       if (!useConfig.getState().liveTransformEnabled && skipUpdate) return;
 
       if (get().hasChanges && contents && contents.length < 80_000 && !isIframe() && !isFetchURL) {
-        window.sessionStorage.setItem("content", contents);
-        window.sessionStorage.setItem("format", get().format);
         set({ hasChanges: true });
       }
 
@@ -145,19 +142,6 @@ const useFile = create<FileStates & JsonActions>()((set, get) => ({
       get().clear();
       toast.error("Failed to fetch document from URL!");
     }
-  },
-  checkEditorSession: (url, widget) => {
-    if (url && typeof url === "string" && isURL(url)) {
-      return get().fetchUrl(url);
-    }
-
-    let contents = defaultJson;
-    const sessionContent = window.sessionStorage.getItem("content") as string | null;
-    const format = window.sessionStorage.getItem("format") as FileFormat | null;
-    if (sessionContent && !widget) contents = sessionContent;
-
-    if (format) set({ format });
-    get().setContents({ contents, hasChanges: false });
   },
 }));
 

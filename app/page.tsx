@@ -1,13 +1,11 @@
 'use client'
 import { Children, useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
-import { useRouter } from "next/navigation";
 import { useMantineColorScheme } from "@mantine/core";
 import "@mantine/dropzone/styles.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Allotment } from "allotment";
 import "allotment/dist/style.css";
-// import Cookie from "js-cookie";
 import { BottomBar } from "./_components/features/editor/BottomBar/BottomBar";
 import { FullscreenDropzone } from "./_components/features/editor/FullscreenDropzone";
 import { Toolbar } from "./_components/features/editor/Toolbar";
@@ -55,17 +53,12 @@ const LiveEditor = dynamic(() => import("./_components/features/editor/Interacti
 
 const EditorPage = () => {
   const pageRef = useRef(null);
-  const checkEditorSession = useFile(state => state.checkEditorSession);
   const fullscreen = useGraph(state => state.fullscreen);
   const { setColorScheme } = useMantineColorScheme();
-
-  // sets JSON to the editor! 
-  // TODO: Look into Editor Session, separate all concerns. trigger this on URL loaded. maybe? 
-
-  useEffect(()=>{
-    checkEditorSession(undefined, false);
-  }, [pageRef])
+  const setContents = useFile(state=>state.setContents);
   
+  // set default to empty object
+  setContents({contents: '{}', hasChanges: false});
 
   // TODO: find out why I need this here! and move it if possible.
 
