@@ -1,5 +1,5 @@
 'use client'
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { Box, LoadingOverlay, useComputedColorScheme } from "@mantine/core";
 import { useDebouncedValue } from "@mantine/hooks";
 import debounce from "lodash.debounce";
@@ -36,8 +36,8 @@ const GraphCanvas = ({ isWidget }: GraphProps) => {
   const nodes = useGraph(state => state.nodes);
   const colorScheme = useComputedColorScheme();
   const edges = useGraph(state => state.edges);
-  const [paneWidth, setPaneWidth] = React.useState(2000);
-  const [paneHeight, setPaneHeight] = React.useState(2000);
+  const [paneWidth, setPaneWidth] = useState(2000);
+  const [paneHeight, setPaneHeight] = useState(2000);
 
   const onLayoutChange = React.useCallback(
     (layout: ElkRoot) => {
@@ -61,9 +61,6 @@ const GraphCanvas = ({ isWidget }: GraphProps) => {
   );
 
   //cancel loading for empty nodes, eg: {}, [] jsons 
-  if(nodes.length == 0) {
-    setLoading(false)
-  }
 
   return (
     <Canvas

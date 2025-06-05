@@ -56,24 +56,24 @@ export const StyledForeignObject = ({children, $isObject, ...props}: ForeighObje
   )
 }
 
-export const StyledKey = ({children, $parent, $type, $value}: {children: React.ReactNode, $parent?: any, $type?: any, $value?: any}) => {
+export const StyledKey = ({children, $parent, $type, $value, ...props}: {children: React.ReactNode, $parent?: any, $type?: any, $value?: any}) => {
   return (
     <span className={styles['styled-key']} style={{
       display: $parent ? "flex" : "inline",
       height: $parent ? `${NODE_DIMENSIONS.PARENT_HEIGHT}px` : "auto",
       lineHeight: $parent ? `${NODE_DIMENSIONS.PARENT_HEIGHT}px` : "inherit",
       color: getTextColor({ $parent, $type, $value }),
-    }}>{children}</span>
+    }} {...props}>{children}</span>
   )
 }
 
-export const StyledRow = ({children, $value}) => {
+export const StyledRow = ({children, $value, ...props}) => {
   return (
     <span className={styles['styled-row']} style={{
       height: NODE_DIMENSIONS.ROW_HEIGHT + `px`,
       color: getTextColor({ $value }),
       borderBottom: `1px solid ${darkTheme.NODE_COLORS.DIVIDER}`,
-    }}>{children}</span>
+    }} {...props}>{children}</span>
   )
 }
 

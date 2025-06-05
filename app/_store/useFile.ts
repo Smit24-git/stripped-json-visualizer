@@ -69,7 +69,12 @@ const isURL = (value: string) => {
 };
 
 const debouncedUpdateJson = debounce((value: unknown) => {
-  useGraph.getState().setLoading(true);
+  if (typeof(value) == 'object') {
+    if (Object.keys(<object>value).length != 0) {
+      console.log(value, 'setting loading true')
+      useGraph.getState().setLoading(true);
+    } 
+  }
   useJson.getState().setJson(JSON.stringify(value, null, 2));
 }, 800);
 

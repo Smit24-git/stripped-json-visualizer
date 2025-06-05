@@ -18,7 +18,7 @@ const StyledExpand = ({children, ...props}) => {
   }}>{children}</button>
 };
 
-const StyledTextNodeWrapper = ({children, $hasCollapse, $isParent}) => {
+const StyledTextNodeWrapper = ({children, $hasCollapse, $isParent, ...props}) => {
   return <span style={{
       display: 'flex',
       justifyContent:  $hasCollapse ? "space-between" : $isParent ? "center" : "flex-start",
@@ -27,7 +27,7 @@ const StyledTextNodeWrapper = ({children, $hasCollapse, $isParent}) => {
       width: '100%',
       overflow: 'hidden',
       padding: $hasCollapse ? "0" : "0 10px",
-    }}>{children}</span>
+    }} {...props}>{children}</span>
 }
 
 const StyledImageWrapper = ({children}) => {

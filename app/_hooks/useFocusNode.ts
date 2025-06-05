@@ -40,7 +40,6 @@ export const useFocusNode = () => {
       setNodeCount(0);
     }
 
-    gaEvent("search_graph");
   }, [selectedNode, debouncedValue, value, viewPort]);
 
   return [value, setValue, skip, nodeCount, selectedNode] as const;

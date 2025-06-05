@@ -28,7 +28,7 @@ export interface Graph {
 const initialStates: Graph = {
   viewPort: null,
   direction: "RIGHT",
-  loading: true,
+  loading: false,
   graphCollapsed: false,
   fullscreen: false,
   collapseAll: false,

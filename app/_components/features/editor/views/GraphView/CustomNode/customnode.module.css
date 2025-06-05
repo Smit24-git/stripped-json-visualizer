@@ -59,16 +59,6 @@
   overflow: hidden;
   pointer-events: none;
 
-  & .searched {
-    background: rgba(27, 255, 0, 0.1);
-    /* border: 2px solid ${darkTheme.TEXT_POSITIVE}; */
-    border-radius: 2px;
-    box-sizing: border-box;
-  }
-
-  .highlight {
-    background: rgba(255, 214, 0, 0.15);
-  }
 
   .renderVisible {
     display: flex;
@@ -81,3 +71,4 @@
     cursor: pointer;
   }
 }
+
