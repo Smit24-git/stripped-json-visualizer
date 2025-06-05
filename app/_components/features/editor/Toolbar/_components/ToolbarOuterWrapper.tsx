@@ -10,10 +10,10 @@ export default function ToolbarOuterWrapper({children}) {
     return (
         <div className={styles['toolbar-outer-wrapper']}
             style={{
-                borderBottom: `1px solid ${darkTheme.SILVER_DARK}`,
-                color: darkTheme.SILVER,
+                borderBottom: `1px solid var(--silver-dark)`,
+                color: 'var(--silver)',
                 zIndex: 36,
-                background: darkTheme.TOOLBAR_BG
+                background: 'var(--toolbar-bg)'
             }}>
             {children}
         </div>

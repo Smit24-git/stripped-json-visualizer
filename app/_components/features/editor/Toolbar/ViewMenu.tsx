@@ -49,8 +49,7 @@ export const ViewMenu = () => {
           leftSection={<BsCheck2 opacity={darkmodeEnabled ? 100 : 0} />}
           onClick={() => {
             // TODO: enable when both modes are available; dark and light
-            // toggleDarkMode(!darkmodeEnabled);
-            // gaEvent("toggle_dark_mode", { label: darkmodeEnabled ? "on" : "off" });
+            toggleDarkMode(!darkmodeEnabled);
           }}
         >
           <Text size="xs">Dark Mode</Text>

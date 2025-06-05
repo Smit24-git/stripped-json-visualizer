@@ -1,11 +1,12 @@
 'use client'
 
 import React, { useEffect } from "react";
-import { createTheme, MantineProvider, useMantineColorScheme } from "@mantine/core";
+import { createTheme, CSSVariablesResolver, defaultCssVariablesResolver, MantineProvider, useMantineColorScheme } from "@mantine/core";
 import "@mantine/core/styles.css";
 import "@mantine/code-highlight/styles.css";
 import { Toaster } from "react-hot-toast";
 import useConfig from "./_store/useConfig";
+import { darkTheme, lightTheme } from "./_constants/theme";
 
 const theme = createTheme({
   autoContrast: true,
@@ -46,6 +47,22 @@ const theme = createTheme({
   },
 });
 
+const resolver: CSSVariablesResolver = (theme) =>({
+  variables: {
+
+  },
+  light: {
+    '--toolbar-bg': lightTheme.TOOLBAR_BG,
+    '--silver': lightTheme.SILVER,    
+    '--silver-dark': lightTheme.SILVER_DARK,
+  },
+  dark: {
+    '--toolbar-bg': darkTheme.TOOLBAR_BG,
+    '--silver': darkTheme.SILVER,
+    '--silver-dark': darkTheme.SILVER_DARK
+  }
+})
+
 export default function JsonCrack({ children }: {children: React.ReactNode}) {
   
   const darkmodeEnabled = useConfig(state => state.darkmodeEnabled);
@@ -54,7 +71,8 @@ export default function JsonCrack({ children }: {children: React.ReactNode}) {
     <>
       <MantineProvider
         defaultColorScheme={darkmodeEnabled ? 'dark' : 'light'}
-        theme={theme}>
+        theme={theme}
+        cssVariablesResolver={resolver}>
           <Toaster
             position="bottom-right"
             containerStyle={{
