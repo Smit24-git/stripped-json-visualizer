@@ -13,8 +13,8 @@ import styles from './customnode.module.css';
 
 const StyledExpand = ({children, ...props}) => {
   return <button {...props} className={styles['styled-expand-wrapper']} style={{
-    color: darkTheme.TEXT_NORMAL,
-    borderLeft: `1px solid ${darkTheme.BACKGROUND_MODIFIER_ACCENT}`,
+    color: 'var(--normal-text-color)',
+    borderLeft: `1px solid var(--background-modifier-accent)`,
   }}>{children}</button>
 };
 

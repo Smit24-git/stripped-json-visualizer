@@ -1,8 +1,5 @@
-import { LinkItUrl } from "react-linkify-it";
 import { NODE_DIMENSIONS } from "../../../../../../_constants/graph";
-import { darkTheme } from "../../../../../../_constants/theme";
 import styles from './customnode.module.css'
-import { PropsWithChildren } from "react";
 
 type TextColorFn = {
   $type?: string;
@@ -10,28 +7,23 @@ type TextColorFn = {
   $parent?: boolean;
 };
 
-function getTextColor({ $value, $type, $parent }: TextColorFn) {
+function getTextColor({ $value, $type, $parent }: TextColorFn): string {
   // per type
-  if ($parent && $type === "array") return darkTheme.NODE_COLORS.PARENT_ARR;
-  if ($parent && $type === "object") return darkTheme.NODE_COLORS.PARENT_OBJ;
-  if ($type === "object") return darkTheme.NODE_COLORS.NODE_KEY;
-  if ($type === "array") return darkTheme.NODE_COLORS.NODE_VALUE;
+  if ($parent && $type === "array") return 'var(--node-array-parent-color)';
+  if ($parent && $type === "object") return 'var(--node-object-parent-color)';
+  if ($type === "object") return 'var(--node-key-color)';
+  if ($type === "array") return 'var(--node-value-color)';
 
   // per value
-  if ($value && !Number.isNaN(+$value)) return darkTheme.NODE_COLORS.INTEGER;
-  if ($value === "true") return darkTheme.NODE_COLORS.BOOL.TRUE;
-  if ($value === "false") return darkTheme.NODE_COLORS.BOOL.FALSE;
-  if ($value === "null") return darkTheme.NODE_COLORS.NULL;
+  if ($value && !Number.isNaN(+$value)) return 'var(--node-integer-color)';
+  if ($value === "true") return 'var(--node-true-color)';
+  if ($value === "false") return 'var(--node-false-color)';
+  if ($value === "null") return 'var(--node-null-color)';
 
   // default
-  return darkTheme.NODE_COLORS.NODE_VALUE;
+  return 'var(--node-value-color)';
 }
 
-export const StyledLinkItUrl = ({children, ...props}) => {
-  return (
-    <LinkItUrl {...props} className={styles['link-it-url']}>{children}</LinkItUrl>
-  )
-}
 
 export type ForeighObjectType = {
   children:React.ReactNode,
@@ -48,7 +40,7 @@ export const StyledForeignObject = ({children, $isObject, ...props}: ForeighObje
       className={styles['foreign-object']} 
       style={{
         textAlign: !$isObject ? "center" : undefined,
-        color: darkTheme.NODE_COLORS.TEXT,
+        color: 'var(--node-text-color)',
       }}
       {...props}>
         {children}
@@ -72,14 +64,14 @@ export const StyledRow = ({children, $value, ...props}) => {
     <span className={styles['styled-row']} style={{
       height: NODE_DIMENSIONS.ROW_HEIGHT + `px`,
       color: getTextColor({ $value }),
-      borderBottom: `1px solid ${darkTheme.NODE_COLORS.DIVIDER}`,
+      borderBottom: `1px solid var(--node-divider-color)`,
     }} {...props}>{children}</span>
   )
 }
 
 export const StyledChildrenCount = ({children}) => {
   return <span style={{
-    color: darkTheme.NODE_COLORS.CHILD_COUNT,
+    color: 'var(--node-child-count-color)',
     padding: '10px',
     marginLeft: '-15px',
   }}> {children} </span>

@@ -1,7 +1,7 @@
 'use client'
 
-import React, { useEffect } from "react";
-import { createTheme, CSSVariablesResolver, defaultCssVariablesResolver, MantineProvider, useMantineColorScheme } from "@mantine/core";
+import React from "react";
+import { createTheme, CSSVariablesResolver, MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
 import "@mantine/code-highlight/styles.css";
 import { Toaster } from "react-hot-toast";
@@ -55,11 +55,37 @@ const resolver: CSSVariablesResolver = (theme) =>({
     '--toolbar-bg': lightTheme.TOOLBAR_BG,
     '--silver': lightTheme.SILVER,    
     '--silver-dark': lightTheme.SILVER_DARK,
+    '--node-text-color': lightTheme.NODE_COLORS.TEXT,
+    '--node-key-color': lightTheme.NODE_COLORS.NODE_KEY,
+    '--node-value-color': lightTheme.NODE_COLORS.NODE_VALUE,
+    '--node-integer-color': lightTheme.NODE_COLORS.INTEGER,
+    '--node-null-color': lightTheme.NODE_COLORS.NULL,
+    '--node-true-color': lightTheme.NODE_COLORS.BOOL.TRUE,
+    '--node-false-color': lightTheme.NODE_COLORS.BOOL.FALSE,
+    '--node-array-parent-color': lightTheme.NODE_COLORS.PARENT_ARR,
+    '--node-object-parent-color': lightTheme.NODE_COLORS.PARENT_OBJ,
+    '--node-child-count-color': lightTheme.NODE_COLORS.CHILD_COUNT,
+    '--node-divider-color': lightTheme.NODE_COLORS.DIVIDER,
+    '--normal-text-color': lightTheme.TEXT_NORMAL,
+    '--background-modifier-accent': lightTheme.BACKGROUND_MODIFIER_ACCENT,
   },
   dark: {
     '--toolbar-bg': darkTheme.TOOLBAR_BG,
     '--silver': darkTheme.SILVER,
-    '--silver-dark': darkTheme.SILVER_DARK
+    '--silver-dark': darkTheme.SILVER_DARK,
+    '--node-text-color': darkTheme.NODE_COLORS.TEXT,
+    '--node-key-color': darkTheme.NODE_COLORS.NODE_KEY,
+    '--node-value-color': darkTheme.NODE_COLORS.NODE_VALUE,
+    '--node-integer-color': darkTheme.NODE_COLORS.INTEGER,
+    '--node-null-color': darkTheme.NODE_COLORS.NULL,
+    '--node-true-color': darkTheme.NODE_COLORS.BOOL.TRUE,
+    '--node-false-color': darkTheme.NODE_COLORS.BOOL.FALSE,
+    '--node-array-parent-color': darkTheme.NODE_COLORS.PARENT_ARR,
+    '--node-object-parent-color': darkTheme.NODE_COLORS.PARENT_OBJ,
+    '--node-child-count-color': darkTheme.NODE_COLORS.CHILD_COUNT,
+    '--node-divider-color': darkTheme.NODE_COLORS.DIVIDER,
+    '--normal-text-color': darkTheme.TEXT_NORMAL,
+    '--background-modifier-accent': darkTheme.BACKGROUND_MODIFIER_ACCENT,
   }
 })
 
