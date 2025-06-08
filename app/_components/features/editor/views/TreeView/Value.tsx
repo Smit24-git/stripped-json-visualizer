@@ -1,19 +1,16 @@
 import React from "react";
 import { TextRenderer } from "../GraphView/CustomNode/TextRenderer";
-import { darkTheme } from "../../../../../_constants/theme";
 
 type TextColorFn = {
   $value?: string | unknown;
 };
-
 function getValueColor({ $value }: TextColorFn) {
-  if ($value && !Number.isNaN(+$value)) return darkTheme.NODE_COLORS.INTEGER;
-  if ($value === "true") return darkTheme.NODE_COLORS.BOOL.TRUE;
-  if ($value === "false") return darkTheme.NODE_COLORS.BOOL.FALSE;
-  if ($value === "null") return darkTheme.NODE_COLORS.NULL;
-
+  if ($value && !Number.isNaN(+$value)) return `var(--node-integer-color)`;
+  if ($value === "true") return `var(--node-true-color)`;
+  if ($value === "false") return `var(--node-false-color)`;
+  if ($value === "null") return `var(--node-null-color)`; 
   // default
-  return darkTheme.NODE_COLORS.NODE_VALUE;
+  return `var(--node-value-color)`;
 }
 
 interface ValueProps {

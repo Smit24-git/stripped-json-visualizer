@@ -44,7 +44,7 @@ cursor: pointer;
 
 /* TODO: use var to support both themes */
 rect {
-    color:rgb(27, 36, 218)
+    color: var(--bg-node)
 }
 
 
@@ -56,9 +56,10 @@ rect {
 .searched {
     background: rgba(27, 255, 0, 0.1);
     border: 2px solid hsl(139,calc(var(--saturation-factor, 1)*51.6%),52.2%);
-    /* border: 2px solid ${darkTheme.TEXT_POSITIVE}; */
+    border: 2px solid var(--positive-text-color) ;
     border-radius: 2px;
     box-sizing: border-box;
+    /* border-bottom: 1px solid var(--positive-text-color); */
 }
 
 .highlight {

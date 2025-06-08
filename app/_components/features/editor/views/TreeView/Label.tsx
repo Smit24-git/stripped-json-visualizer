@@ -1,7 +1,6 @@
 'use client'
 import React from "react";
 import type { KeyPath } from "react-json-tree";
-import { darkTheme } from "../../../../../_constants/theme";
 import styles from './treeview.module.css';
 
 interface LabelProps {
@@ -10,9 +9,9 @@ interface LabelProps {
 }
 
 function getLabelColor({ $type }: { $type?: string }) {
-  if ($type === "Object") return darkTheme.NODE_COLORS.PARENT_OBJ;
-  if ($type === "Array") return darkTheme.NODE_COLORS.PARENT_ARR;
-  return darkTheme.NODE_COLORS.PARENT_OBJ;
+  if ($type === "Object") return 'var(--node-object-parent-color)';
+  if ($type === "Array") return 'var(--node-array-parent-color)'; 
+  return 'var(--node-object-parent-color)';
 }
 
 const StyledLabel = ({children, $nodeType}) => {

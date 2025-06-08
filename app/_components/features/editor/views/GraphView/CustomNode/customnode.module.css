@@ -26,13 +26,6 @@
   &:last-of-type {
     border-bottom: none;
   }
-
-
-  /* TODO: fix this. */
-  .searched & {
-    /* border-bottom: 1px solid ${darkTheme.TEXT_POSITIVE}; */
-  }
-
 }
 
 .styled-key {

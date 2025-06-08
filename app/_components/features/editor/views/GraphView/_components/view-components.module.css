@@ -7,23 +7,6 @@
     cursor: url("/assets/cursor.svg"), auto !important;
 }
 
-/* TODO: not working, moved to global css, still not working */
-.wrapper:active {
-    cursor: move !important;
-}
-
-/* TODO: not working, moved to global css, seems to be working */
-.dragging,
-.dragging button {
-    pointer-events: none;
-}
-
-/* TODO: need to find rects. */
-/* rect {
-    fill: ${darkTheme.BACKGROUND_NODE};
-} */
-
-
 @media only screen and (max-width: 320px) {
     .wrapper {
         height: 100vh;

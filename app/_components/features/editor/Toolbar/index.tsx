@@ -10,18 +10,8 @@ import { FileMenu } from "./FileMenu";
 import { ToolsMenu } from "./ToolsMenu";
 import { ViewMenu } from "./ViewMenu";
 import ToolbarOuterWrapper from "./_components/ToolbarOuterWrapper";
-import { darkTheme } from "../../../../_constants/theme";
 import styles from './toobar.module.css'
 
-function fullscreenBrowser() {
-  if (!document.fullscreenElement) {
-    document.documentElement.requestFullscreen().catch(() => {
-      toast.error("Unable to enter fullscreen mode.");
-    });
-  } else if (document.exitFullscreen) {
-    document.exitFullscreen();
-  }
-}
 
 export const Toolbar = () => {
   const setFormat = useFile(state => state.setFormat);
@@ -30,7 +20,7 @@ export const Toolbar = () => {
   return (
     <ToolbarOuterWrapper>
       <Group gap="xs" justify="left" w="100%" style={{ flexWrap: "nowrap" }}>
-        <button style={{color: darkTheme.INTERACTIVE_NORMAL}} className={styles['styled-toolbar-button']}>
+        <button style={{color: 'var(--interactive-normal-color)'}} className={styles['styled-toolbar-button']}>
           <Flex align="center" gap={3}>
             <JSONVisLogo/>
           </Flex>
@@ -51,7 +41,7 @@ export const Toolbar = () => {
         <ToolsMenu />
       </Group>
       <Group gap="xs" justify="right" w="100%" style={{ flexWrap: "nowrap" }}>
-        <button style={{color: darkTheme.INTERACTIVE_NORMAL}} className={styles['styled-toolbar-button']}>
+        <button style={{color: 'var(--interactive-normal-color)'}} className={styles['styled-toolbar-button']}>
           <AiOutlineFullscreen size="18" />
         </button>
       </Group>

@@ -8,7 +8,6 @@ import { isContentImage } from "../lib/utils/calculateNodeSize";
 import useGraph from "../stores/useGraph";
 import { TextRenderer } from "./TextRenderer";
 import * as Styled from "./styles";
-import { darkTheme } from "../../../../../../_constants/theme";
 import styles from './customnode.module.css';
 
 const StyledExpand = ({children, ...props}) => {
@@ -43,7 +42,7 @@ const StyledImage = ({...props}) => {
   return  <img {...props} style={{
     borderRadius: '2px',
     objectFit: 'contain',
-    background: darkTheme.BACKGROUND_MODIFIER_ACCENT,
+    background: 'var(--background-modifier-accent)' 
   }} />
 }
 

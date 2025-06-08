@@ -4,7 +4,6 @@ import { JSONTree } from "react-json-tree";
 import useJson from "../../../../../_store/useJson";
 import { Label } from "./Label";
 import { Value } from "./Value";
-import { darkTheme } from "../../../../../_constants/theme";
 
 export const TreeView = () => {
   const json = useJson(state => state.json);
@@ -21,7 +20,7 @@ export const TreeView = () => {
           height: "100%",
           scheme: "monokai",
           author: "wimer hazenberg (http://www.monokai.nl)",
-          base00: darkTheme.GRID_BG_COLOR,
+          base00: 'var(--bg-grid-color)',
         },
       }}
     />

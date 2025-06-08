@@ -4,8 +4,8 @@ import { event as gaEvent } from "nextjs-google-analytics";
 import { CgChevronDown } from "react-icons/cg";
 import useFile from "../../../../_store/useFile";
 import { useModal } from "../../../../_store/useModal";
-import { darkTheme } from "../../../../_constants/theme";
 import styles from './toobar.module.css'
+``
 export const FileMenu = () => {
   const setVisible = useModal(state => state.setVisible);
   const getContents = useFile(state => state.getContents);
@@ -25,7 +25,7 @@ export const FileMenu = () => {
   return (
     <Menu shadow="md" withArrow>
       <Menu.Target>
-        <button style={{color: darkTheme.INTERACTIVE_NORMAL}} className={styles['styled-toolbar-button']}>
+        <button style={{color: 'var(--interactive-normal-color)'}} className={styles['styled-toolbar-button']}>
           <Flex align="center" gap={3}>
             File
             <CgChevronDown />

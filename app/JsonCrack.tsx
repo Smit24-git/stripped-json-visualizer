@@ -68,6 +68,13 @@ const resolver: CSSVariablesResolver = (theme) =>({
     '--node-divider-color': lightTheme.NODE_COLORS.DIVIDER,
     '--normal-text-color': lightTheme.TEXT_NORMAL,
     '--background-modifier-accent': lightTheme.BACKGROUND_MODIFIER_ACCENT,
+    '--interactive-hover-color': lightTheme.INTERACTIVE_HOVER,
+    '--interactive-normal-color': lightTheme.INTERACTIVE_NORMAL,
+    '--bg-grid-color': lightTheme.GRID_BG_COLOR,
+    '--primary-grid-color': lightTheme.GRID_COLOR_PRIMARY,
+    '--grid-color-secondary': lightTheme.GRID_COLOR_SECONDARY,
+    '--bg-node': lightTheme.BACKGROUND_NODE,
+    '--positive-text-color': lightTheme.TEXT_POSITIVE,
   },
   dark: {
     '--toolbar-bg': darkTheme.TOOLBAR_BG,
@@ -86,6 +93,13 @@ const resolver: CSSVariablesResolver = (theme) =>({
     '--node-divider-color': darkTheme.NODE_COLORS.DIVIDER,
     '--normal-text-color': darkTheme.TEXT_NORMAL,
     '--background-modifier-accent': darkTheme.BACKGROUND_MODIFIER_ACCENT,
+    '--interactive-hover-color': darkTheme.INTERACTIVE_HOVER,
+    '--interactive-normal-color': darkTheme.INTERACTIVE_NORMAL,
+    '--bg-grid-color': darkTheme.GRID_BG_COLOR,
+    '--primary-grid-color': darkTheme.GRID_COLOR_PRIMARY,
+    '--grid-color-secondary': darkTheme.GRID_COLOR_SECONDARY,
+    '--bg-node': darkTheme.BACKGROUND_NODE,
+    '--positive-text-color': darkTheme.TEXT_POSITIVE
   }
 })
 

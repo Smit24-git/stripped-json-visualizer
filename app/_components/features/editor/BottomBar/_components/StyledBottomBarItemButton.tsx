@@ -1,6 +1,5 @@
 import { ReactNode } from 'react'
 import styles from './styledbar.module.css'
-import { darkTheme } from '../../../../../_constants/theme'
 
 
 export default function StyledBottomBarItemButton(
@@ -17,8 +16,7 @@ export default function StyledBottomBarItemButton(
     return (
         <button disabled={disabled} className={styles['bottom-bar-item-wrapper']} onClick={onClick}
             style={{
-                color: darkTheme.INTERACTIVE_NORMAL,
-                // background: ${({ $bg }) => $bg}
+                color: '--var(--interactive-normal-color)',
             }} >
             {children}
         </button>
