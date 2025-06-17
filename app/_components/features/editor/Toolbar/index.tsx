@@ -10,7 +10,7 @@ import { FileMenu } from "./FileMenu";
 import { ToolsMenu } from "./ToolsMenu";
 import { ViewMenu } from "./ViewMenu";
 import ToolbarOuterWrapper from "./_components/ToolbarOuterWrapper";
-import styles from './toobar.module.css'
+import styles from './toolbar.module.css'
 
 
 export const Toolbar = () => {

@@ -12,7 +12,7 @@ import { jsonToContent } from "../../../../_lib/utils/jsonAdapter";
 import useFile from "../../../../_store/useFile";
 import useJson from "../../../../_store/useJson";
 import { useModal } from "../../../../_store/useModal";
-import styles from './toobar.module.css'
+import styles from './toolbar.module.css'
 
 export const ToolsMenu = () => {
   const setVisible = useModal(state => state.setVisible);

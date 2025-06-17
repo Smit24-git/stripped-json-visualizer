@@ -4,7 +4,7 @@ import { event as gaEvent } from "nextjs-google-analytics";
 import { CgChevronDown } from "react-icons/cg";
 import useFile from "../../../../_store/useFile";
 import { useModal } from "../../../../_store/useModal";
-import styles from './toobar.module.css'
+import styles from './toolbar.module.css'
 ``
 export const FileMenu = () => {
   const setVisible = useModal(state => state.setVisible);

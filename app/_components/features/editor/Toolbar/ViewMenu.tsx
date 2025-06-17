@@ -2,12 +2,11 @@
 import React from "react";
 import { Menu, Flex, SegmentedControl, Text } from "@mantine/core";
 import { useSessionStorage } from "@mantine/hooks";
-import { event as gaEvent } from "nextjs-google-analytics";
 import { BsCheck2 } from "react-icons/bs";
 import { CgChevronDown } from "react-icons/cg";
 import { ViewMode } from "../../../../_enums/viewMode.enum";
 import useConfig from "../../../../_store/useConfig";
-import styles from './toobar.module.css'
+import styles from './toolbar.module.css'
 
 export const ViewMenu = () => {
   const darkmodeEnabled = useConfig(state => state.darkmodeEnabled);
@@ -20,7 +19,7 @@ export const ViewMenu = () => {
   return (
     <Menu shadow="md" closeOnItemClick={false} withArrow>
       <Menu.Target>
-       <button style={{color: '--var(interactive-normal-color)'}} className={styles['styled-toolbar-button']}>
+       <button className={styles['styled-toolbar-button']}>
           <Flex align="center" gap={3}>
             View <CgChevronDown />
           </Flex>
@@ -48,7 +47,6 @@ export const ViewMenu = () => {
         <Menu.Item
           leftSection={<BsCheck2 opacity={darkmodeEnabled ? 100 : 0} />}
           onClick={() => {
-            // TODO: enable when both modes are available; dark and light
             toggleDarkMode(!darkmodeEnabled);
           }}
         >
